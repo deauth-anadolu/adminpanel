@@ -1,0 +1,43 @@
+    {% comment %} {% comment %} <script>
+        function updateContent() {
+            $.ajax({
+                url: "update_table/",
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    var contentHtml = '<div class="col-md-12"><div class="content-card">' + data.content.join('') + '</div></div>';
+                    $("#content").html(contentHtml);
+                },
+                error: function(error) {
+                    console.log("Error fetching content:", error);
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            // Initial content update
+            updateContent();
+
+            // Button click event
+            $("#updateButton").click(function() {
+                updateContent();
+            });
+
+            // Periodic content update
+            setInterval(updateContent, 6000);  // Update every 6 seconds
+        });
+    </script> {% endcomment %}
+
+    <script>
+        // Wait for the document to be fully loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get all rows with class red-row
+            var rows = document.querySelectorAll(".red-row");
+            
+            // Iterate through each row
+            rows.forEach(function(row) {
+                // Trigger alert for each row
+                alert("Device under attack!");
+            });
+        });
+    </script>
